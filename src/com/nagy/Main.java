@@ -18,15 +18,6 @@ public class Main {
                 "071");
 
         List<String> gNumbers = new ArrayList<>();
-//        someBingNumbers.forEach(number -> {
-//            if (number.toUpperCase().startsWith("G")) {
-//                gNumbers.add(number);
-//          //      System.out.println(number);
-//            }
-//        });
-//
-//        gNumbers.sort((String s1, String s2) -> s1.compareTo(s2));
-//        gNumbers.forEach((String s) -> System.out.println(s));
         gNumbers.add("str");
         someBingNumbers
                 .stream()
@@ -36,6 +27,7 @@ public class Main {
                 .forEach(System.out::println);
         someBingNumbers.stream().sorted().sorted() ;
 
+        System.out.println("Some thing to push!");
 
     }
 }
