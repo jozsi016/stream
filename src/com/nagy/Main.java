@@ -27,7 +27,7 @@ public class Main {
 //                .forEach(System.out::println);
 
         Stream<String> ioNumberStream = Stream.of("I26", "I17", "I29", "071");
-        Stream<String> inNumberStream = Stream.of("N40", "N36", "I26", "I17","I29", "071");
+        Stream<String> inNumberStream = Stream.of("N40", "N36", "I26", "I17", "I29", "071");
         Stream<String> concatStream = Stream.concat(ioNumberStream, inNumberStream);
 //        System.out.println("-------------------------------");
 //        System.out.println(concatStream
@@ -48,7 +48,7 @@ public class Main {
         Department accounting = new Department("Accounting");
         accounting.addEmployee(john);
 
-        List <Department> departments = new ArrayList<>();
+        List<Department> departments = new ArrayList<>();
         departments.add(hr);
         departments.add(accounting);
 
@@ -56,7 +56,7 @@ public class Main {
                 .flatMap(department -> department.getEmployees().stream())
                 .forEach(System.out::println);
 
-      Scanner input = new Scanner(System.in);
+        Scanner input = new Scanner(System.in);
 
         System.out.println("-------------------");
 //        List<String> sortedGNumbers = someBingNumbers
@@ -69,11 +69,11 @@ public class Main {
         List<String> sortedGNumbers = someBingNumbers
                 .stream()
                 .map(String::toUpperCase)
-                .filter(s-> s.startsWith("G") || s.startsWith("N"))
+                .filter(s -> s.startsWith("G") || s.startsWith("N"))
                 .sorted()
-                .collect(ArrayList::new, ArrayList::add,  ArrayList::addAll);
+                .collect(ArrayList::new, ArrayList::add, ArrayList::addAll);
 
-        for(String s : sortedGNumbers) {
+        for (String s : sortedGNumbers) {
             System.out.println(s);
         }
 
@@ -86,10 +86,10 @@ public class Main {
                 .reduce((e1, e2) -> e1.getAge() < e2.getAge() ? e1 : e2)
                 .ifPresent(System.out::println);
 
-       List<String> list =  Stream.of("ABC", "AC", "BAA", "CCCC", "XY", "ST")
-            .filter(s -> s.length() == 3).collect(Collectors.toList());
+        List<String> list = Stream.of("ABC", "AC", "BAA", "CCCC", "XY", "ST")
+                .filter(s -> s.length() == 3).collect(Collectors.toList());
 
-       list.forEach(System.out::println);
+        list.forEach(System.out::println);
 
-     }
+    }
 }
