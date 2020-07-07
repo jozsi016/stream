@@ -1,6 +1,8 @@
 package com.nagy;
 
 import java.util.*;
+import java.util.function.Function;
+import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -17,23 +19,23 @@ public class Main {
                 "I26", "I17", "I29",
                 "071");
 
-//        List<String> gNumbers = new ArrayList<>();
-//        gNumbers.add("str");
-//        someBingNumbers
-//                .stream()
-//                .map(String::toUpperCase)
-//                .filter(s -> s.startsWith("G"))
-//                .sorted()
-//                .forEach(System.out::println);
+        List<String> gNumbers = new ArrayList<>();
+        gNumbers.add("str");
+        someBingNumbers
+                .stream()
+                .map(String::toUpperCase)
+                .filter(s -> s.startsWith("G"))
+                .sorted()
+                .forEach(System.out::println);
 
         Stream<String> ioNumberStream = Stream.of("I26", "I17", "I29", "071");
         Stream<String> inNumberStream = Stream.of("N40", "N36", "I26", "I17", "I29", "071");
         Stream<String> concatStream = Stream.concat(ioNumberStream, inNumberStream);
-//        System.out.println("-------------------------------");
-//        System.out.println(concatStream
-//                .distinct()
-//                .peek(System.out::println)
-//                .count());
+        System.out.println("-------------------------------");
+        System.out.println(concatStream
+                .distinct()
+                .peek(System.out::println)
+                .count());
 
         Employee john = new Employee("John Doe", 30);
         Employee jane = new Employee("Jane Deer", 25);
@@ -56,15 +58,7 @@ public class Main {
                 .flatMap(department -> department.getEmployees().stream())
                 .forEach(System.out::println);
 
-        Scanner input = new Scanner(System.in);
-
         System.out.println("-------------------");
-//        List<String> sortedGNumbers = someBingNumbers
-//                .stream()
-//                .map(String::toUpperCase)
-//                .filter(s-> s.startsWith("G") || s.startsWith("N"))
-//                .sorted()
-//                .collect(Collectors.toList());
 
         List<String> sortedGNumbers = someBingNumbers
                 .stream()
@@ -91,5 +85,51 @@ public class Main {
 
         list.forEach(System.out::println);
 
+        Runnable runnable = () -> {
+            String myString = "Let's split up into an array";
+            String[] parts = myString.split(" ");
+            for (String part : parts) {
+                System.out.println(part);
+            }
+        };
+        runnable.run();
+
+        EverySecondChar everySecondChar = s -> {
+            StringBuilder returnVal = new StringBuilder();
+            for (int i = 0; i < s.length(); i++) {
+                if (i % 2 == 1) {
+                    returnVal.append(s.charAt(i));
+                }
+            }
+            return returnVal.toString();
+        };
+
+        Function<String, String> lambdaFunction = s -> {
+            StringBuilder returnVal = new StringBuilder();
+            for (int i = 0; i < s.length(); i++) {
+                if (i % 2 == 1) {
+                    returnVal.append(s.charAt(i));
+                }
+            }
+            return returnVal.toString();
+        };
+
+        System.out.println(everySecondCharacter(lambdaFunction));
+
+        Supplier<String> iLoveJava = () -> { return "I love Java!"; };
+
+        String supplierResult = iLoveJava.get();
+        System.out.println(supplierResult);
+
+        List<String> topNames2015 = Arrays.asList("Amelia", "Olivia", "emily", "Isla", "Ava", "oliver", "Jack", "Charlie", "harry", "Jacob");
+        topNames2015.stream().map(s ->
+                s.substring(0, 1).toUpperCase() + s.substring(1)).sorted().forEach(System.out::println);
+
+        System.out.println(topNames2015.stream().filter(s -> s.contains("A")).count());
+
+    }
+
+    public static String everySecondCharacter(Function<String, String> func) {
+        return func.apply("1234567890");
     }
 }
