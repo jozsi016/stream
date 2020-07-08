@@ -42,6 +42,11 @@ public class Main {
         Employee jack = new Employee("Jack Hill", 40);
         Employee snow = new Employee("Snow White", 22);
 
+        Employee john1 = new Employee("John Doe", 30);
+        Employee jane2 = new Employee("Jane Deer", 25);
+        Employee jack3 = new Employee("Jack Hill", 40);
+        Employee snow4 = new Employee("Snow White", 22);
+
         Department hr = new Department("Human Resources");
         hr.addEmployee(jane);
         hr.addEmployee(jack);
